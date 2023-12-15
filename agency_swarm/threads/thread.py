@@ -17,12 +17,16 @@ class Thread:
         self.agent = agent
         self.recipient_agent = recipient_agent
         self.client = get_openai_client()
+        self.thread = self.client.beta.threads.create()
+        self.id = self.thread.id
 
-    def get_completion(self, message: str, yield_messages=True):
-        if not self.thread:
-            self.thread = self.client.beta.threads.create()
-            self.id = self.thread.id
+        send_str= "user" if isinstance(self.agent, User) else f'{self.agent.name}'
+        print(f'THREAD:[ {send_str} -> {self.recipient_agent.name} ]: URL https://platform.openai.com/playground?assistant={self.recipient_agent._assistant.id}&mode=assistant&thread={self.thread.id}')
 
+
+
+    def get_completion(self, message: str, yield_messages=True):       
+        
         # send message
         self.client.beta.threads.messages.create(
             thread_id=self.thread.id,

@@ -9,7 +9,7 @@ from agency_swarm.util.oai import get_openai_client
 
 
 class Thread:
-    id: str
+    id: str = None
     thread = None
     run = None
 
@@ -17,16 +17,17 @@ class Thread:
         self.agent = agent
         self.recipient_agent = recipient_agent
         self.client = get_openai_client()
-        self.thread = self.client.beta.threads.create()
-        self.id = self.thread.id
-
         send_str= "user" if isinstance(self.agent, User) else f'{self.agent.name}'
         print(f'THREAD:[ {send_str} -> {self.recipient_agent.name} ]: URL https://platform.openai.com/playground?assistant={self.recipient_agent._assistant.id}&mode=assistant&thread={self.thread.id}')
 
 
 
     def get_completion(self, message: str, yield_messages=True):       
-        
+        if self.id:
+            self.thread = self.client.beta.threads.retrieve(self.id)
+        else:
+            self.thread = self.client.beta.threads.create()
+            self.id = self.thread.id
         # send message
         self.client.beta.threads.messages.create(
             thread_id=self.thread.id,
@@ -98,8 +99,8 @@ class Thread:
 
     def _execute_tool(self, tool_call):
         funcs = self.recipient_agent.functions
-        func = next(iter([func for func in funcs if func.__name__ == tool_call.function.name]))
-
+        func = next((func for func in funcs if func.__name__ == tool_call.function.name), None)
+        
         if not func:
             return f"Error: Function {tool_call.function.name} not found. Available functions: {[func.__name__ for func in funcs]}"
 

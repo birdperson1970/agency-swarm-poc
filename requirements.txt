@@ -7,3 +7,6 @@ rich==13.7.0
 gradio
 pydantic==2.0.2
 pexpect
+pytz
+langchain
+google-api-python-client

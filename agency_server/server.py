@@ -113,4 +113,37 @@ class ClusterServer():
 
 server = ClusterServer()
 
-asyncio.run(server.run())
+asyncio.run(server.run())import gradio as gr
+
+def fetch_threads():
+    # TODO: Replace placeholder logic with actual thread-fetching logic
+    # Example placeholder data
+    return [{\'thread_id\': 1, \'thread_title\': 'Thread A', \'thread_content\': 'Content A'},
+            {\'thread_id\': 2, \'thread_title\': 'Thread B', \'thread_content\': 'Content B'},]
+
+def display_threads(thread_data):
+    # Transform thread data for display, if necessary.
+    return '
+
+'.join([f"ID: {thread['thread_id']}
+Title: {thread['thread_title']}
+Content: {thread['thread_content']}" for thread in thread_data])
+
+# Gradio interface to display threads
+threads_interface = gr.Interface(fn=display_threads, inputs='textbox', outputs='text', title="Thread Display")
+# TODO: Integrate threads_interface into the demo_gradio layout within the ClusterServer class.
+
+
+    # Placeholder for integrating threads_interface into the demo_gradio layout
+    def demo_gradio(self):
+        # Existing Gradio setup...
+        
+        # Integration of threads_interface
+        threads_panel = gr.TabbedInterface([threads_interface], title="Threads")
+
+        # Combine the existing interface(s) and threads_panel into the Gradio layout
+        # This is conceptual and needs to be adjusted to the actual implementation of demo_gradio
+        existing_demo = gr.Group([]) # This should actually be the existing setup
+        final_layout = gr.Split([existing_demo, threads_panel], orientation="vertical")
+        final_layout.launch()
+

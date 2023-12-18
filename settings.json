@@ -4,7 +4,7 @@
         "created_at": 1702874006,
         "description": "Responsible for client communication, task planning and management.",
         "file_ids": [],
-        "instructions": "agents/manifesto.md\n\nagent_id: agent-po\nagent_role: Product Owner\n\n# GROUP INSTRUCTIONS\nYou and your team work on a software projects dictated by the location of you shells current directory\n\nYou have full access to the files in the project by Shell commands.\n\nYou must always use relative path names when communicating with agents and functions\n\nYou have full access to the internet via the GoogleSearchTool.\n\n\n# ROLE INSTRUCTIONS\n\nYou must converse with other agents to ensure complete task execution.\n\nYou must review the completed issues for completeness and merge them into the main branch.\n\n\n",
+        "instructions": "agents/manifesto.md\n\nagent_id: agent-po\nagent_role: Product Owner\n\n# GROUP INSTRUCTIONS\nYou and your team work on a software projects dictated by the location of you shells current directory\n\nYou have full access to the files in the project by Shell commands.\n\nWith file name always use relative path names when communicating with agents and functions\n\nIf you can't find a file use shell find.\n\nIf you need more information use the GoogleSeachFuntion\n\nYou have full access to the internet via the GoogleSearchTool.\n\n\n# ROLE INSTRUCTIONS\n\nYou must converse with other agents to ensure complete task execution.\n\nYou must review the completed issues for completeness and merge them into the main branch.\n\n\n",
         "metadata": {},
         "model": "gpt-4-1106-preview",
         "name": "agent-po",
@@ -132,7 +132,7 @@
                                 "type": "string"
                             },
                             "snippet": {
-                                "description": "Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement. Missing or extra characters could cause unexpected results.",
+                                "description": "Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement including whitespace formating. Missing or extra characters could cause unexpected results.",
                                 "title": "Snippet",
                                 "type": "string"
                             },
@@ -149,6 +149,19 @@
                                 "description": "Provide a unique pattern or line of code that marks the beginning of the section in the file where the changes should start. This must uniquely identify the location within the file to start making changes, being specific helps to avoid applying changes in the wrong place.",
                                 "title": "Start Pattern"
                             },
+                            "start_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "An alternative to 'start_pattern', this is a line number marking the beginning of the section in the file where the changes should start.",
+                                "title": "Start Line"
+                            },
                             "end_pattern": {
                                 "anyOf": [
                                     {
@@ -161,6 +174,19 @@
                                 "default": null,
                                 "description": "Provide a corresponding pattern or line of code that marks the end of the section where the changes will stop. This is important for defining a precise area for modification and should immediately follow the area described by the start pattern.",
                                 "title": "End Pattern"
+                            },
+                            "end_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "An alternative to 'end_pattern', this is a line number marking the end of the section where the changes will stop.",
+                                "title": "End Line"
                             },
                             "mode": {
                                 "anyOf": [
@@ -245,7 +271,7 @@
         "created_at": 1702874007,
         "description": "Reposonsible for implementing all coding tasks.",
         "file_ids": [],
-        "instructions": "agents/manifesto.md\n\nagent_id: agent-developer\nagent_role: Developer\n\n# GROUP INSTRUCTIONS\nYou and your team work on a software projects dictated by the location of you shells current directory\n\nYou have full access to the files in the project by Shell commands.\n\nYou must always use relative path names when communicating with agents and functions\n\nYou have full access to the internet via the GoogleSearchTool.\n\n\n# ROLE INSTRUCTIONS\n\nYou always write both the code and unit tests\n\nYour code must be of the highest stand for understandability\n\n",
+        "instructions": "agents/manifesto.md\n\nagent_id: agent-developer\nagent_role: Developer\n\n# GROUP INSTRUCTIONS\nYou and your team work on a software projects dictated by the location of you shells current directory\n\nYou have full access to the files in the project by Shell commands.\n\nWith file name always use relative path names when communicating with agents and functions\n\nIf you can't find a file use shell find.\n\nIf you need more information use the GoogleSeachFuntion\n\nYou have full access to the internet via the GoogleSearchTool.\n\n\n# ROLE INSTRUCTIONS\n\nYou always write both the code and unit tests\n\nYour code must be of the highest stand for understandability\n\n",
         "metadata": {},
         "model": "gpt-4-1106-preview",
         "name": "agent-developer",
@@ -373,7 +399,7 @@
                                 "type": "string"
                             },
                             "snippet": {
-                                "description": "Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement. Missing or extra characters could cause unexpected results.",
+                                "description": "Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement including whitespace formating. Missing or extra characters could cause unexpected results.",
                                 "title": "Snippet",
                                 "type": "string"
                             },
@@ -390,6 +416,19 @@
                                 "description": "Provide a unique pattern or line of code that marks the beginning of the section in the file where the changes should start. This must uniquely identify the location within the file to start making changes, being specific helps to avoid applying changes in the wrong place.",
                                 "title": "Start Pattern"
                             },
+                            "start_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "An alternative to 'start_pattern', this is a line number marking the beginning of the section in the file where the changes should start.",
+                                "title": "Start Line"
+                            },
                             "end_pattern": {
                                 "anyOf": [
                                     {
@@ -402,6 +441,19 @@
                                 "default": null,
                                 "description": "Provide a corresponding pattern or line of code that marks the end of the section where the changes will stop. This is important for defining a precise area for modification and should immediately follow the area described by the start pattern.",
                                 "title": "End Pattern"
+                            },
+                            "end_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "An alternative to 'end_pattern', this is a line number marking the end of the section where the changes will stop.",
+                                "title": "End Line"
                             },
                             "mode": {
                                 "anyOf": [
@@ -481,7 +533,7 @@
         "created_at": 1702874007,
         "description": "Responsible for completing all other tasks.",
         "file_ids": [],
-        "instructions": "agents/manifesto.md\n\nagent_role: Virtual Assitant\n\n# GROUP INSTRUCTIONS\nYou and your team work on a software projects dictated by the location of you shells current directory\n\nYou have full access to the files in the project by Shell commands.\n\nYou must always use relative path names when communicating with agents and functions\n\nYou have full access to the internet via the GoogleSearchTool.\n\n\n# ROLE INSTRUCTIONS\n\nYou will be asked to complete a range of tasks\n\n",
+        "instructions": "agents/manifesto.md\n\nagent_role: Virtual Assitant\n\n# GROUP INSTRUCTIONS\nYou and your team work on a software projects dictated by the location of you shells current directory\n\nYou have full access to the files in the project by Shell commands.\n\nWith file name always use relative path names when communicating with agents and functions\n\nIf you can't find a file use shell find.\n\nIf you need more information use the GoogleSeachFuntion\n\nYou have full access to the internet via the GoogleSearchTool.\n\n\n\n# ROLE INSTRUCTIONS\n\nYou will be asked to complete a range of tasks\n\n",
         "metadata": {},
         "model": "gpt-4-1106-preview",
         "name": "agent-va",
@@ -609,7 +661,7 @@
                                 "type": "string"
                             },
                             "snippet": {
-                                "description": "Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement. Missing or extra characters could cause unexpected results.",
+                                "description": "Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement including whitespace formating. Missing or extra characters could cause unexpected results.",
                                 "title": "Snippet",
                                 "type": "string"
                             },
@@ -626,6 +678,19 @@
                                 "description": "Provide a unique pattern or line of code that marks the beginning of the section in the file where the changes should start. This must uniquely identify the location within the file to start making changes, being specific helps to avoid applying changes in the wrong place.",
                                 "title": "Start Pattern"
                             },
+                            "start_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "An alternative to 'start_pattern', this is a line number marking the beginning of the section in the file where the changes should start.",
+                                "title": "Start Line"
+                            },
                             "end_pattern": {
                                 "anyOf": [
                                     {
@@ -638,6 +703,19 @@
                                 "default": null,
                                 "description": "Provide a corresponding pattern or line of code that marks the end of the section where the changes will stop. This is important for defining a precise area for modification and should immediately follow the area described by the start pattern.",
                                 "title": "End Pattern"
+                            },
+                            "end_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "An alternative to 'end_pattern', this is a line number marking the end of the section where the changes will stop.",
+                                "title": "End Line"
                             },
                             "mode": {
                                 "anyOf": [
@@ -670,7 +748,7 @@
         "created_at": 1702874007,
         "description": "Responsible for creating design and documentation for the project.",
         "file_ids": [],
-        "instructions": "agents/manifesto.md\n\nagent_id: agent-architect\nagent_role: Architect\n\n# GROUP INSTRUCTIONS\nYou and your team work on a software projects dictated by the location of you shells current directory\n\nYou have full access to the files in the project by Shell commands.\n\nYou must always use relative path names when communicating with agents and functions\n\nYou have full access to the internet via the GoogleSearchTool.\n\n\n# ROLE INSTRUCTIONS\n\nYou will be assigned must design and document the entire solution.\n\nYour must review and update plantuml and mark down documents in the /docs directory\n\n\n",
+        "instructions": "agents/manifesto.md\n\nagent_id: agent-architect\nagent_role: Architect\n\n# GROUP INSTRUCTIONS\nYou and your team work on a software projects dictated by the location of you shells current directory\n\nYou have full access to the files in the project by Shell commands.\n\nWith file name always use relative path names when communicating with agents and functions\n\nIf you can't find a file use shell find.\n\nIf you need more information use the GoogleSeachFuntion\n\nYou have full access to the internet via the GoogleSearchTool.\n\n\n\n# ROLE INSTRUCTIONS\n\nYou will be assigned must design and document the entire solution.\n\nYour must review and update plantuml and mark down documents in the /docs directory\n\n\n",
         "metadata": {},
         "model": "gpt-4-1106-preview",
         "name": "agent-architect",
@@ -798,7 +876,7 @@
                                 "type": "string"
                             },
                             "snippet": {
-                                "description": "Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement. Missing or extra characters could cause unexpected results.",
+                                "description": "Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement including whitespace formating. Missing or extra characters could cause unexpected results.",
                                 "title": "Snippet",
                                 "type": "string"
                             },
@@ -815,6 +893,19 @@
                                 "description": "Provide a unique pattern or line of code that marks the beginning of the section in the file where the changes should start. This must uniquely identify the location within the file to start making changes, being specific helps to avoid applying changes in the wrong place.",
                                 "title": "Start Pattern"
                             },
+                            "start_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "An alternative to 'start_pattern', this is a line number marking the beginning of the section in the file where the changes should start.",
+                                "title": "Start Line"
+                            },
                             "end_pattern": {
                                 "anyOf": [
                                     {
@@ -827,6 +918,19 @@
                                 "default": null,
                                 "description": "Provide a corresponding pattern or line of code that marks the end of the section where the changes will stop. This is important for defining a precise area for modification and should immediately follow the area described by the start pattern.",
                                 "title": "End Pattern"
+                            },
+                            "end_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "An alternative to 'end_pattern', this is a line number marking the end of the section where the changes will stop.",
+                                "title": "End Line"
                             },
                             "mode": {
                                 "anyOf": [

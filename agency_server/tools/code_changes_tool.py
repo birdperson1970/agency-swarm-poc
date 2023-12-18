@@ -9,20 +9,21 @@ from agency_swarm.tools.base_tool import BaseTool
 class FilePatchTool(BaseTool):
     # Define the fields with descriptions using Pydantic Field
     file_path: str = Field(
-        ..., description="The target file path."
+        ..., description="Specify the complete path to the file that you want to make changes to. This should be the absolute path starting from the root or a relative path from the current working directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes."
     )
     snippet: str = Field(
-        ..., description="The modified content to compare with the original file."
+        ..., description="Enter the exact portion of the code or text that you want to use for comparison or to replace, delete, or insert into the file. Ensure that this snippet accurately reflects the changes you intend to implement. Missing or extra characters could cause unexpected results."
     )
     start_pattern: Optional[str] = Field(
-        None, description="The start pattern."
+        None, description="Provide a unique pattern or line of code that marks the beginning of the section in the file where the changes should start. This must uniquely identify the location within the file to start making changes, being specific helps to avoid applying changes in the wrong place."
     )
     end_pattern: Optional[str] = Field(
-        None, description="The end pattern."
+        None, description="Provide a corresponding pattern or line of code that marks the end of the section where the changes will stop. This is important for defining a precise area for modification and should immediately follow the area described by the start pattern."
     )
     mode: Optional[str] = Field(
-        None, description="delete, replace, insert"
+        None, description="Choose the operation mode from 'delete', 'replace', or 'insert'. Select 'delete' if you want to remove the text between the start and end patterns. Choose 'replace' to substitute this text with the snippet provided, and 'insert' to add the snippet directly after the start pattern, preserving any existing content."
     )
+
 
     def run(self):     
         # Read the original file content

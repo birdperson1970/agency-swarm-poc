@@ -17,17 +17,17 @@ def apply_code_changes(file_path, snippet, start_pattern, end_pattern=None, mode
         return "Start pattern not found."
 
     if mode == "delete":
-        # Delete the range of lines from start_index to end_index
-        del lines[start_index:end_index+1]
+        # Delete the range of lines from start_index up to but not including end_index
+        del lines[start_index:end_index]
     elif mode == "replace":
         # Replace the range of lines with the snippet
-        snippet_lines = snippet.split('\n')
-        lines[start_index:end_index+1] = [line + '\n' for line in snippet_lines]
+        snippet_lines = snippet.split("\n")
+        lines[start_index:end_index+1] = [line + "\n" for line in snippet_lines]
     elif mode == "insert":
         # Insert the snippet at the start_index
-        snippet_lines = snippet.split('\n')
+        snippet_lines = snippet.split("\n")
         for i, snippet_line in enumerate(snippet_lines):
-            lines.insert(start_index + i + 1, snippet_line + '\n')
+            lines.insert(start_index + i + 1, snippet_line + "\n")
     else:
         return "Invalid mode specified."
 
@@ -37,10 +37,3 @@ def apply_code_changes(file_path, snippet, start_pattern, end_pattern=None, mode
     
     return "Code changes successfully applied."
 
-# Usage Example:
-# file_path = 'path_to_file.py'
-# snippet = 'print("This is a code snippet")'
-# start_pattern = 'def my_function():'     # Pattern indicating where changes should begin
-# end_pattern = 'return'                   # Pattern indicating where changes should end (optional for insert mode)
-# mode = 'replace'                         # Mode can be 'insert', 'delete', or 'replace'
-# apply_code_changes(file_path, snippet, start_pattern, end_pattern, mode)

@@ -1,4 +1,4 @@
-
+agent_id: agent-architect
 agent_role: Architect
 
 # INSTRUCTIONS

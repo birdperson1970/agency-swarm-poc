@@ -17,9 +17,7 @@ class Thread:
     def __init__(self, agent: Literal[Agent, User], recipient_agent: Agent):
         self.agent = agent
         self.recipient_agent = recipient_agent
-        self.client = get_openai_client()
-        send_str= "user" if isinstance(self.agent, User) else f'{self.agent.name}'
-        print(f'THREAD:[ {send_str} -> {self.recipient_agent.name} ]: URL https://platform.openai.com/playground?assistant={self.recipient_agent._assistant.id}&mode=assistant&thread={self.thread.id}')
+        self.client = get_openai_client() 
 
     def get_completion(self, message: str, yield_messages=True):       
         if not self.thread:

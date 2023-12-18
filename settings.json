@@ -123,6 +123,71 @@
             },
             {
                 "function": {
+                    "name": "FilePatchTool",
+                    "parameters": {
+                        "properties": {
+                            "file_path": {
+                                "description": "The target file path.",
+                                "title": "File Path",
+                                "type": "string"
+                            },
+                            "snippet": {
+                                "description": "The modified content to compare with the original file.",
+                                "title": "Snippet",
+                                "type": "string"
+                            },
+                            "start_pattern": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "The start pattern.",
+                                "title": "Start Pattern"
+                            },
+                            "end_pattern": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "The end pattern.",
+                                "title": "End Pattern"
+                            },
+                            "mode": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "delete, replace, insert",
+                                "title": "Mode"
+                            }
+                        },
+                        "required": [
+                            "file_path",
+                            "snippet"
+                        ],
+                        "type": "object"
+                    },
+                    "description": "Correctly extracted `FilePatchTool` with all the required parameters with correct types"
+                },
+                "type": "function"
+            },
+            {
+                "function": {
                     "name": "SendMessage",
                     "parameters": {
                         "$defs": {
@@ -299,6 +364,71 @@
             },
             {
                 "function": {
+                    "name": "FilePatchTool",
+                    "parameters": {
+                        "properties": {
+                            "file_path": {
+                                "description": "The target file path.",
+                                "title": "File Path",
+                                "type": "string"
+                            },
+                            "snippet": {
+                                "description": "The modified content to compare with the original file.",
+                                "title": "Snippet",
+                                "type": "string"
+                            },
+                            "start_pattern": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "The start pattern.",
+                                "title": "Start Pattern"
+                            },
+                            "end_pattern": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "The end pattern.",
+                                "title": "End Pattern"
+                            },
+                            "mode": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "delete, replace, insert",
+                                "title": "Mode"
+                            }
+                        },
+                        "required": [
+                            "file_path",
+                            "snippet"
+                        ],
+                        "type": "object"
+                    },
+                    "description": "Correctly extracted `FilePatchTool` with all the required parameters with correct types"
+                },
+                "type": "function"
+            },
+            {
+                "function": {
                     "name": "SendMessage",
                     "parameters": {
                         "$defs": {
@@ -467,6 +597,71 @@
                     "description": "Tool to run GitHub commands."
                 },
                 "type": "function"
+            },
+            {
+                "function": {
+                    "name": "FilePatchTool",
+                    "parameters": {
+                        "properties": {
+                            "file_path": {
+                                "description": "The target file path.",
+                                "title": "File Path",
+                                "type": "string"
+                            },
+                            "snippet": {
+                                "description": "The modified content to compare with the original file.",
+                                "title": "Snippet",
+                                "type": "string"
+                            },
+                            "start_pattern": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "The start pattern.",
+                                "title": "Start Pattern"
+                            },
+                            "end_pattern": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "The end pattern.",
+                                "title": "End Pattern"
+                            },
+                            "mode": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "delete, replace, insert",
+                                "title": "Mode"
+                            }
+                        },
+                        "required": [
+                            "file_path",
+                            "snippet"
+                        ],
+                        "type": "object"
+                    },
+                    "description": "Correctly extracted `FilePatchTool` with all the required parameters with correct types"
+                },
+                "type": "function"
             }
         ]
     },
@@ -589,6 +784,71 @@
                         "type": "object"
                     },
                     "description": "Tool to run GitHub commands."
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "FilePatchTool",
+                    "parameters": {
+                        "properties": {
+                            "file_path": {
+                                "description": "The target file path.",
+                                "title": "File Path",
+                                "type": "string"
+                            },
+                            "snippet": {
+                                "description": "The modified content to compare with the original file.",
+                                "title": "Snippet",
+                                "type": "string"
+                            },
+                            "start_pattern": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "The start pattern.",
+                                "title": "Start Pattern"
+                            },
+                            "end_pattern": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "The end pattern.",
+                                "title": "End Pattern"
+                            },
+                            "mode": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
+                                "default": null,
+                                "description": "delete, replace, insert",
+                                "title": "Mode"
+                            }
+                        },
+                        "required": [
+                            "file_path",
+                            "snippet"
+                        ],
+                        "type": "object"
+                    },
+                    "description": "Correctly extracted `FilePatchTool` with all the required parameters with correct types"
                 },
                 "type": "function"
             },

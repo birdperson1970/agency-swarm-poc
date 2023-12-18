@@ -12,6 +12,7 @@ from agency_swarm.threads import Thread
 from agency_swarm.tools import BaseTool
 from agency_swarm.user import User
 
+
 console = Console()
 
 
@@ -350,6 +351,10 @@ class Agency:
                     message = e.value
 
                 return message or ""
+       
+        # Print the memory address of the SendMessage class
+        print(f"SendMessage class defined at memory address: {id(SendMessage)}")
+
 
         return SendMessage
 

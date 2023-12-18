@@ -50,7 +50,7 @@ class Agent():
         self.name = name if name else self.__class__.__name__
         self.description = description
         self.instructions = instructions
-        self.tools = tools if tools else []
+        self.tools = tools[:] if tools else []
         self.files_folder = files_folder
         self.file_ids = file_ids if file_ids else []
         self.metadata = metadata if metadata else {}
@@ -277,6 +277,7 @@ class Agent():
             setattr(self, k, v)
 
     def add_tool(self, tool):
+        print(f"add_tool({self.name} tool={tool} instance= {id(tool)}  caller= {tool.model_fields['caller_agent_name']}")
         if not isinstance(tool, type):
             raise Exception("Tool must not be initialized.")
         if issubclass(tool, Retrieval):

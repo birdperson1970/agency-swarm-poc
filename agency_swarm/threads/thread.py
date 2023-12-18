@@ -6,8 +6,9 @@ from agency_swarm.agents import Agent
 from agency_swarm.messages import MessageOutput
 from agency_swarm.user import User
 from agency_swarm.util.oai import get_openai_client
+from agency_swarm.util.logging import getLogger
 
-
+logger = getLogger("Thread")
 class Thread:
     id: str = None
     thread = None
@@ -55,9 +56,11 @@ class Thread:
 
             # function execution
             if self.run.status == "requires_action":
+                
                 tool_calls = self.run.required_action.submit_tool_outputs.tool_calls
                 tool_outputs = []
                 for tool_call in tool_calls:
+                    logger.info(f"tool: {tool_call}")
                     if yield_messages:
                         yield MessageOutput("function", self.recipient_agent.name, self.agent.name, str(tool_call.function))
 

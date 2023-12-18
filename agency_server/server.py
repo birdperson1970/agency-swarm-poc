@@ -17,10 +17,10 @@ from typing import Any, List
 from agency_swarm import set_openai_key
 
 from agency_swarm import Agency
-from agency_swarm.util.logging import getLogger
+
 from langchain.tools import YouTubeSearchTool
 from agency_swarm.tools import ToolFactory
-
+from agency_swarm.util.logging import getLogger
 logger = getLogger('SwarmServer')
 from agency_swarm import Agent
 
@@ -39,40 +39,36 @@ tools.append(ToolFactory.from_langchain_tool(YouTubeSearchTool))
 
 tools.append(CurrentTimeTool)
 tools.append(GoogleSearchTool)
-
 tools.append(ShellTool)
-#tools.append(GitHubTool)
-
-
-
+tools.append(GitHubTool)
 
 agent_po = Agent(name="agent-po",
             description="Responsible for client communication, task planning and management.",
             instructions="instructions/agent-po.md", # can be a file like ./instructions.md
             files_folder=None,
-            model="gpt-3.5-turbo-1106",
-            tools=tools)
+          #  model="gpt-3.5-turbo-1106",
+            tools=tools[:])
 
 agent_arch = Agent(name="agent-architect",
             description="Responsible for creating design and documentation for the project.",
             instructions="instructions/agent-architect.md" ,# can be a file like ./instructions.md
             files_folder=None,
-            model="gpt-3.5-turbo-1106",
-            tools=tools)
+           # model="gpt-3.5-turbo-1106",
+            tools=tools[:])
 
 agent_dev = Agent(name="agent-developer",
             description="Reposonsible for implementing all coding tasks.",
             instructions="instructions/agent-developer.md", # can be a file like ./instructions.md
             files_folder=None,
-            model="gpt-3.5-turbo-1106",
-            tools=tools)
+            #model="gpt-3.5-turbo-1106",
+            tools=tools[:])
 
 agent_va = Agent(name="agent-va",
             description="Responsible for completing all other tasks.",
             instructions="instructions/agent-va.md", # can be a file like ./instructions.md
             files_folder=None,
-            model="gpt-3.5-turbo-1106",
-            tools=tools)
+            #model="gpt-3.5-turbo-1106",
+            tools=tools[:])
 
 
 
@@ -89,11 +85,11 @@ class ClusterServer():
     def __init__(self): 
         
         self._agency = Agency([
-                agent_po,  # CEO will be the entry point for communication with the user
-                [agent_po, agent_dev],  # CEO can initiate communication with Developer
+                agent_po,  
+                [agent_po, agent_dev],  
                 [agent_po, agent_va],   # CEO can initiate communication with Virtual Assistant
                 [agent_po, agent_arch],
-                [agent_po, agent_dev],
+                [agent_arch, agent_dev],
                 [agent_dev, agent_arch]            
             ], shared_instructions='agents/manifesto.md') # shared instructions for all agents
 

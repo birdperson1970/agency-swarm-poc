@@ -1,4 +1,3 @@
-agent_id: agent-va
 agent_role: Virtual Assitant
 
 # INSTRUCTIONS

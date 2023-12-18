@@ -1,125 +1,12 @@
 [
     {
-        "id": "asst_jVDHDxoXJYdc1fADmjNTuQIy",
-        "created_at": 1702164766,
+        "id": "asst_ROpNmqDwaOMVs0asItqSxOE6",
+        "created_at": 1702874006,
         "description": "Responsible for client communication, task planning and management.",
         "file_ids": [],
-        "instructions": "agency_manifesto.md\n\nYou must converse with other agents to ensure complete task execution.",
+        "instructions": "agents/manifesto.md\n\nagent_role: Product Owner\n\n# INSTRUCTIONS\nYou must converse with other agents to ensure complete task execution.\nYou must create GitHub Issues and assign them to the appropriate agent.\nYou must review the completed issues for completeness and merge them into the main branch.\nYou must add comments to the issues as actions are carried out.\n\n",
         "metadata": {},
         "model": "gpt-4-1106-preview",
-        "name": "CEO",
-        "object": "assistant",
-        "tools": [
-            {
-                "function": {
-                    "name": "MyCustomTool",
-                    "parameters": {
-                        "properties": {
-                            "timezone_str": {
-                                "description": "The timezone you want the time in.",
-                                "title": "Timezone Str",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "timezone_str"
-                        ],
-                        "type": "object"
-                    },
-                    "description": "\n    get the current time\n    "
-                },
-                "type": "function"
-            },
-            {
-                "function": {
-                    "name": "SendMessage",
-                    "parameters": {
-                        "$defs": {
-                            "recipient": {
-                                "const": "Software Architect",
-                                "title": "recipient"
-                            }
-                        },
-                        "properties": {
-                            "chain_of_thought": {
-                                "description": "Think step by step to determine the correct recipient and message.",
-                                "title": "Chain Of Thought",
-                                "type": "string"
-                            },
-                            "recipient": {
-                                "allOf": [
-                                    {
-                                        "$ref": "#/$defs/recipient"
-                                    }
-                                ],
-                                "description": "Software Architect: Responsible for client communication, task planning and management.\n"
-                            },
-                            "message": {
-                                "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
-                                "title": "Message",
-                                "type": "string"
-                            },
-                            "caller_agent_name": {
-                                "default": "CEO",
-                                "description": "The agent calling this tool. Defaults to your name. Do not change it.",
-                                "title": "Caller Agent Name",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "chain_of_thought",
-                            "message",
-                            "recipient"
-                        ],
-                        "type": "object"
-                    },
-                    "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as they do not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved."
-                },
-                "type": "function"
-            }
-        ]
-    },
-    {
-        "id": "asst_KaOAV7g8n7VtdVGPLvHB3gXo",
-        "created_at": 1702164767,
-        "description": "Responsible for client communication, task planning and management.",
-        "file_ids": [],
-        "instructions": "agency_manifesto.md\n\nYou are a software architect. Do what you are told.\nAlways give complete and detailed responses and NEVER summersize your responses as your developers can't fill in the blanks.\nThe developers depend on you to supply all of the details so they can complete their tasks. ",
-        "metadata": {},
-        "model": "gpt-4-1106-preview",
-        "name": "Software Architect",
-        "object": "assistant",
-        "tools": [
-            {
-                "function": {
-                    "name": "MyCustomTool",
-                    "parameters": {
-                        "properties": {
-                            "timezone_str": {
-                                "description": "The timezone you want the time in.",
-                                "title": "Timezone Str",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "timezone_str"
-                        ],
-                        "type": "object"
-                    },
-                    "description": "\n    get the current time\n    "
-                },
-                "type": "function"
-            }
-        ]
-    },
-    {
-        "id": "asst_GwLuca0iMpk74Nk41AckGegr",
-        "created_at": 1702790511,
-        "description": "Responsible for client communication, task planning and management.",
-        "file_ids": [],
-        "instructions": "agents/manifesto.md\n\nagent_id: agent-po\nagent_role: Product Owner\n\n# INSTRUCTIONS\nYou must converse with other agents to ensure complete task execution.\nYou must create GitHub Issues and assign them to the appropriate agent.\nYou must review the completed issues for completeness and merge them into the main branch.\nYou must add comments to the issues as actions are carried out.\n\n",
-        "metadata": {},
-        "model": "gpt-3.5-turbo-1106",
         "name": "agent-po",
         "object": "assistant",
         "tools": [
@@ -211,8 +98,13 @@
                     "parameters": {
                         "$defs": {
                             "recipient": {
-                                "const": "agent-architect",
-                                "title": "recipient"
+                                "enum": [
+                                    "agent-developer",
+                                    "agent-va",
+                                    "agent-architect"
+                                ],
+                                "title": "recipient",
+                                "type": "string"
                             }
                         },
                         "properties": {
@@ -227,7 +119,7 @@
                                         "$ref": "#/$defs/recipient"
                                     }
                                 ],
-                                "description": "agent-architect: Responsible for creating design and documentation for the project.\n"
+                                "description": "agent-developer: Reposonsible for implementing all coding tasks.\nagent-va: Responsible for completing all other tasks.\nagent-architect: Responsible for creating design and documentation for the project.\n"
                             },
                             "message": {
                                 "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
@@ -235,7 +127,7 @@
                                 "type": "string"
                             },
                             "caller_agent_name": {
-                                "default": "agent-developer",
+                                "default": "agent-po",
                                 "description": "The agent calling this tool. Defaults to your name. Do not change it.",
                                 "title": "Caller Agent Name",
                                 "type": "string"
@@ -255,13 +147,13 @@
         ]
     },
     {
-        "id": "asst_0YkrRRbqzwJ200hxo0zpusDa",
-        "created_at": 1702790511,
+        "id": "asst_h97eRpASvzUhpsRpw1twDQ5x",
+        "created_at": 1702874007,
         "description": "Reposonsible for implementing all coding tasks.",
         "file_ids": [],
-        "instructions": "agents/manifesto.md\n\nagent_id: agent-developer\nagent_role: Developer\n\n# INSTRUCTIONS\n# Continue Dev Assistant Instructions\nYou will review the GitHub Issue you are asked to implement\nYou will try and complete the issue and if it is too large break it down into small and easier to implement issues\nYou always write both the code and unit tests\nYour code must be of the highest stand for understandability\nThe Issue is not considered complete until it has test which pass and logging.\nAll important changes and decions will be captured in the issue comments.\n",
+        "instructions": "agents/manifesto.md\n\nagent_role: Developer\n\n# INSTRUCTIONS\n# Continue Dev Assistant Instructions\nYou will review the GitHub Issue you are asked to implement\nYou will try and complete the issue and if it is too large break it down into small and easier to implement issues\nYou always write both the code and unit tests\nYour code must be of the highest stand for understandability\nThe Issue is not considered complete until it has test which pass and logging.\nAll important changes and decions will be captured in the issue comments.\n",
         "metadata": {},
-        "model": "gpt-3.5-turbo-1106",
+        "model": "gpt-4-1106-preview",
         "name": "agent-developer",
         "object": "assistant",
         "tools": [
@@ -397,13 +289,13 @@
         ]
     },
     {
-        "id": "asst_yy07dsZ1IofmsSqZze0TeBuT",
-        "created_at": 1702790512,
+        "id": "asst_HpS4dsTqv39EWSKDJQlDDVxC",
+        "created_at": 1702874007,
         "description": "Responsible for completing all other tasks.",
         "file_ids": [],
-        "instructions": "agents/manifesto.md\n\nagent_id: agent-va\nagent_role: Virtual Assitant\n\n# INSTRUCTIONS\nYou will be asked to complete a range of tasks\n\n",
+        "instructions": "agents/manifesto.md\n\nagent_role: Virtual Assitant\n\n# INSTRUCTIONS\nYou will be asked to complete a range of tasks\n\n",
         "metadata": {},
-        "model": "gpt-3.5-turbo-1106",
+        "model": "gpt-4-1106-preview",
         "name": "agent-va",
         "object": "assistant",
         "tools": [
@@ -488,64 +380,17 @@
                     "description": "Tool to run shell commands excluding git and gh use theGitHubTool instead."
                 },
                 "type": "function"
-            },
-            {
-                "function": {
-                    "name": "SendMessage",
-                    "parameters": {
-                        "$defs": {
-                            "recipient": {
-                                "const": "agent-architect",
-                                "title": "recipient"
-                            }
-                        },
-                        "properties": {
-                            "chain_of_thought": {
-                                "description": "Think step by step to determine the correct recipient and message.",
-                                "title": "Chain Of Thought",
-                                "type": "string"
-                            },
-                            "recipient": {
-                                "allOf": [
-                                    {
-                                        "$ref": "#/$defs/recipient"
-                                    }
-                                ],
-                                "description": "agent-architect: Responsible for creating design and documentation for the project.\n"
-                            },
-                            "message": {
-                                "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
-                                "title": "Message",
-                                "type": "string"
-                            },
-                            "caller_agent_name": {
-                                "default": "agent-developer",
-                                "description": "The agent calling this tool. Defaults to your name. Do not change it.",
-                                "title": "Caller Agent Name",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "chain_of_thought",
-                            "message",
-                            "recipient"
-                        ],
-                        "type": "object"
-                    },
-                    "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as they do not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved."
-                },
-                "type": "function"
             }
         ]
     },
     {
-        "id": "asst_KYWCPFegp4XnBHDgqxsNb9YA",
-        "created_at": 1702790512,
+        "id": "asst_nHJXkbBF9dbJHqyYlxGzC7jP",
+        "created_at": 1702874007,
         "description": "Responsible for creating design and documentation for the project.",
         "file_ids": [],
-        "instructions": "agents/manifesto.md\n\nagent_id: agent-architect\nagent_role: Architect\n\n# INSTRUCTIONS\nYou will be assigned must design and document the entire solution.\nYour must review and update plantuml and mark down documents in the /docs directory\nBreak down any large Github Issues into smaller Github Issues until they are small enough to hand across to the Developer Agent.\nYou must add comments to the issues as actions are carried out.\n\n\n",
+        "instructions": "agents/manifesto.md\n\nagent_role: Architect\n\n# INSTRUCTIONS\nYou will be assigned must design and document the entire solution.\nYour must review and update plantuml and mark down documents in the /docs directory\nBreak down any large Github Issues into smaller Github Issues until they are small enough to hand across to the Developer Agent.\nYou must add comments to the issues as actions are carried out.\n\n\n",
         "metadata": {},
-        "model": "gpt-3.5-turbo-1106",
+        "model": "gpt-4-1106-preview",
         "name": "agent-architect",
         "object": "assistant",
         "tools": [
@@ -637,7 +482,7 @@
                     "parameters": {
                         "$defs": {
                             "recipient": {
-                                "const": "agent-architect",
+                                "const": "agent-developer",
                                 "title": "recipient"
                             }
                         },
@@ -653,7 +498,7 @@
                                         "$ref": "#/$defs/recipient"
                                     }
                                 ],
-                                "description": "agent-architect: Responsible for creating design and documentation for the project.\n"
+                                "description": "agent-developer: Reposonsible for implementing all coding tasks.\n"
                             },
                             "message": {
                                 "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
@@ -661,7 +506,7 @@
                                 "type": "string"
                             },
                             "caller_agent_name": {
-                                "default": "agent-developer",
+                                "default": "agent-architect",
                                 "description": "The agent calling this tool. Defaults to your name. Do not change it.",
                                 "title": "Caller Agent Name",
                                 "type": "string"

@@ -1,4 +1,3 @@
-agent_id: agent-po
 agent_role: Product Owner
 
 # INSTRUCTIONS

@@ -1,0 +1,51 @@
+{
+  "name": "SendMessage",
+  "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as they do not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved.",
+  "parameters": {
+    "$defs": {
+      "recipient": {
+        "const": "agent-architect",
+        "title": "recipient"
+      }
+    },
+    "properties": {
+      "chain_of_thought": {
+        "description": "Think step by step to determine the correct recipient and message.",
+        "title": "Chain Of Thought",
+        "type": "string"
+      },
+      "recipient": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/recipient"
+          }
+        ],
+        "description": "agent-architect: Responsible for creating design and documentation for the project.\n"
+      },
+      "message": {
+        "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
+        "title": "Message",
+        "type": "string"
+      },
+      "caller_agent_name": {
+        "default": "agent-developer",
+        "description": "The agent calling this tool. Defaults to your name. Do not change it.",
+        "title": "Caller Agent Name",
+        "type": "string"
+      }
+    },
+    "required": [
+      "chain_of_thought",
+      "message",
+      "recipient"
+    ],
+    "type": "object"
+  }
+}
+
+Function(arguments='{"chain_of_thought":"I'm being asked to greet the developer, so I will send a message to the Agent Developer for a friendly hello.",
+"recipient":"agent-developer","message":"Hello! The User sends their greetings."}', name='SendMessage')
+
+'agent-developer: Reposonsible for implementing all coding tasks.\n
+agent-va: Responsible for completing all other tasks.\n
+agent-architect: Responsible for creating design and documentation for the project.\n'

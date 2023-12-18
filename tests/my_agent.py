@@ -73,24 +73,24 @@ agency = Agency([
 
 gen= (agency.get_completion("""
 
- what's the time                 
+say hello to the architect                
 
 
 """))
 
-# while True:
-#     try:
-#     # Yield each message from the generator
-#         for bot_message in gen:
-#             # if bot_message.sender_name.lower() == "user":
-#             #     continue
+while True:
+    try:
+    # Yield each message from the generator
+        for bot_message in gen:
+            # if bot_message.sender_name.lower() == "user":
+            #     continue
 
-#             message = bot_message.get_sender_emoji() + " " + bot_message.get_formatted_content()
-#             print(message)
+            message = bot_message.get_sender_emoji() + " " + bot_message.get_formatted_content()
+            print(message)
 
-#     except StopIteration:
-#     # Handle the end of the conversation if necessary
-#         pass        
+    except StopIteration:
+    # Handle the end of the conversation if necessary
+        pass        
 
 
-agency.demo_gradio(height=900)
+# agency.demo_gradio(height=900)

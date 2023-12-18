@@ -41,7 +41,7 @@ tools.append(ToolFactory.from_langchain_tool(YouTubeSearchTool))
 tools.append(CurrentTimeTool)
 tools.append(GoogleSearchTool)
 tools.append(ShellTool)
-tools.append(GitHubTool)
+#tools.append(GitHubTool)
 tools.append(FilePatchTool)
 
 agent_po = Agent(name="agent-po",

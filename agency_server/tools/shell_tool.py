@@ -1,4 +1,3 @@
-
 import asyncio
 import platform
 import warnings
@@ -6,7 +5,6 @@ from typing import Any, List, Optional, Type, Union
 
 
 from agency_swarm.tools import BaseTool
-
 
 
 # """Wrapper around subprocess to run commands."""
@@ -87,7 +85,6 @@ class BashProcess:
             )
         return pexpect
 
-  
     def _initialize_persistent_process(self, prompt: str) -> pexpect.spawn:
         # Start bash in a clean environment
         # Doesn't work on windows
@@ -165,7 +162,7 @@ class BashProcess:
         return output.strip()
 
     def _run_persistent(self, command: str) -> str:
-        """ 
+        """
         Runs commands in a persistent environment
         and returns the output.
 
@@ -194,7 +191,6 @@ class BashProcess:
         return output
 
 
-
 class ShellInput(BaseTool):
     """Commands for the Bash Shell tool."""
 
@@ -204,7 +200,6 @@ class ShellInput(BaseTool):
     )
     """List of shell commands to run."""
 
-    
     def _validate_commands(cls, values: dict) -> dict:
         """Validate commands."""
         # TODO: Add real validators
@@ -216,7 +211,6 @@ class ShellInput(BaseTool):
             "The shell tool has no safeguards by default. Use at your own risk."
         )
         return values
-
 
 
 def _get_default_bash_process() -> Any:
@@ -237,30 +231,26 @@ class ShellTool(BaseTool):
     """Tool to run shell commands excluding git and gh use theGitHubTool instead."""
 
     commands: List[str] = Field(
-        ..., description="Run shell list of commands on this {_get_platform()} machine. The bash shell command and argument you wish to ececute."
+        ...,
+        description="Run shell list of commands on this {_get_platform()} machine. The bash shell command and argument you wish to ececute.",
     )
 
     def run(self):
-        process= _get_default_bash_process()
+        process = _get_default_bash_process()
         commands = [*self.commands]
         return process.run(commands)
 
- 
+
 class GitHubTool(BaseTool):
     """Tool to run GitHub commands."""
-    agent_id: str = Field(
-        ..., description="Your agent_id to authorize you on GitHub."
-    )
+
+    agent_id: str = Field(..., description="Your agent_id to authorize you on GitHub.")
     commands: List[str] = Field(
         ..., description="Run GitHub 'git' and 'gh' commands you wish to ececute."
     )
 
     def run(self):
-        process= _get_default_bash_process()
-     
+        process = _get_default_bash_process()
 
         commands = [f"~/bin/git_switch.sh {self.agent_id}", *self.commands]
         return process.run(commands)
-
- 
-

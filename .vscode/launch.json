@@ -11,6 +11,14 @@
             "program": "agency_server/server.py",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "test_file_patch_tool",
+            "type": "python",
+            "request": "launch",
+            "program": "tests/test_file_patch_tool/test_file_patch_tool.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }

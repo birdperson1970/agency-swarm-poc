@@ -22,9 +22,9 @@ class FilePatchTool(BaseTool):
         description="This is a line number marking the beginning of the section in the file where the changes should start.",
     )
 
-    end_line: int = Field(
+    end_line: Optional[int] = Field(
         None,
-        description="This is a line number marking the end of the section where the changes will stop.",
+        description="This is a line number marking the end of the section to 'replace' or 'delete' lines.",
     )
     mode: Optional[str] = Field(
         None,
@@ -32,44 +32,38 @@ class FilePatchTool(BaseTool):
     )
 
     def run(self):
-
         if self.mode == "create":
             # Create a new file with the snippet
             with open(self.file_path, "w") as file:
                 file.writelines([line + "\n" for line in self.snippet.split("\n")])
             return "File created successfully."
-        elif self.mode == "delete":
-                if os.path.exists(self.file_path):
-                    # Delete the file
-                    os.remove(self.file_path)
-                    return (f"File '{self.file_path}' has been deleted.")
-                else:
-                    return (f"ERROR The file '{self.file_path}' does not exist.")
+
         else:
             # Read the original file content
             with open(self.file_path, "r") as file:
                 lines = file.readlines()
 
-            if self.start_line is not None and self.end_line is not None:
-                start_index = (
-                    self.start_line - 1
-                )  # Adjusting because list index starts at 0
+            if self.start_line is None:
+                return "Start line not found."
+            start_index = (
+                self.start_line - 1
+            )  # Adjusting because list index starts at 0
+            if self.end_line is not None:
                 end_index = self.end_line
 
-            if start_index is None or end_index is None:
-                return "Start or end line not found."
-
-
-            elif self.mode == "replace":
+            if self.mode == "replace":
                 # Replace the range of lines with the snippet
                 snippet_lines = self.snippet.split("\n")
-                lines[start_index : end_index + 1] = [line + "\n" for line in snippet_lines]
+                lines[start_index : end_index] = [
+                    line + "\n" for line in snippet_lines
+                ]
             elif self.mode == "insert":
                 # Insert the snippet at the start_index
                 snippet_lines = self.snippet.split("\n")
                 for i, snippet_line in enumerate(snippet_lines):
                     lines.insert(start_index + i + 1, snippet_line + "\n")
-            
+            elif self.mode == "delete":
+                del lines[start_index:end_index]
 
         # Write the updated content back to the file
         with open(self.file_path, "w") as file:

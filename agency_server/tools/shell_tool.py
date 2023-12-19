@@ -17,6 +17,9 @@ from typing import TYPE_CHECKING, List, Union
 from uuid import uuid4
 
 import pexpect
+from agency_swarm.util.logging import getLogger
+
+logger = getLogger("BashProcess")
 
 
 class BashProcess:

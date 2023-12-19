@@ -1,15 +1,3 @@
-import unittest, json
-
-import sys
-from typing import List
-
-from instructor import OpenAISchema
-from pydantic import Field
-
-from agency_swarm import Agency, Agent
-from agency_swarm.util.schema import dereference_schema, reference_schema
-from tests.test_agent import TestAgent
-
 sys.path.insert(0, '../agency-swarm')
 from agency_swarm.tools import ToolFactory
 from langchain.tools import MoveFileTool, YouTubeSearchTool, DuckDuckGoSearchRun
@@ -27,7 +15,6 @@ class ToolFactoryTest(unittest.TestCase):
         print(tool)
 
         tool = tool(destination_path="Move a file from one folder to another",
-                    source_path="Move a file from one folder to another")
 
         print(tool.model_dump())
 

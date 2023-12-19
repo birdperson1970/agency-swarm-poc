@@ -94,35 +94,6 @@
             },
             {
                 "function": {
-                    "name": "GitHubTool",
-                    "parameters": {
-                        "properties": {
-                            "agent_id": {
-                                "description": "Your agent_id to authorize you on GitHub.",
-                                "title": "Agent Id",
-                                "type": "string"
-                            },
-                            "commands": {
-                                "description": "Run GitHub 'git' and 'gh' commands you wish to ececute.",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "title": "Commands",
-                                "type": "array"
-                            }
-                        },
-                        "required": [
-                            "agent_id",
-                            "commands"
-                        ],
-                        "type": "object"
-                    },
-                    "description": "Tool to run GitHub commands."
-                },
-                "type": "function"
-            },
-            {
-                "function": {
                     "name": "FilePatchTool",
                     "parameters": {
                         "properties": {
@@ -361,35 +332,6 @@
             },
             {
                 "function": {
-                    "name": "GitHubTool",
-                    "parameters": {
-                        "properties": {
-                            "agent_id": {
-                                "description": "Your agent_id to authorize you on GitHub.",
-                                "title": "Agent Id",
-                                "type": "string"
-                            },
-                            "commands": {
-                                "description": "Run GitHub 'git' and 'gh' commands you wish to ececute.",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "title": "Commands",
-                                "type": "array"
-                            }
-                        },
-                        "required": [
-                            "agent_id",
-                            "commands"
-                        ],
-                        "type": "object"
-                    },
-                    "description": "Tool to run GitHub commands."
-                },
-                "type": "function"
-            },
-            {
-                "function": {
                     "name": "FilePatchTool",
                     "parameters": {
                         "properties": {
@@ -623,35 +565,6 @@
             },
             {
                 "function": {
-                    "name": "GitHubTool",
-                    "parameters": {
-                        "properties": {
-                            "agent_id": {
-                                "description": "Your agent_id to authorize you on GitHub.",
-                                "title": "Agent Id",
-                                "type": "string"
-                            },
-                            "commands": {
-                                "description": "Run GitHub 'git' and 'gh' commands you wish to ececute.",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "title": "Commands",
-                                "type": "array"
-                            }
-                        },
-                        "required": [
-                            "agent_id",
-                            "commands"
-                        ],
-                        "type": "object"
-                    },
-                    "description": "Tool to run GitHub commands."
-                },
-                "type": "function"
-            },
-            {
-                "function": {
                     "name": "FilePatchTool",
                     "parameters": {
                         "properties": {
@@ -833,35 +746,6 @@
                         "type": "object"
                     },
                     "description": "Tool to run shell commands excluding git and gh use theGitHubTool instead."
-                },
-                "type": "function"
-            },
-            {
-                "function": {
-                    "name": "GitHubTool",
-                    "parameters": {
-                        "properties": {
-                            "agent_id": {
-                                "description": "Your agent_id to authorize you on GitHub.",
-                                "title": "Agent Id",
-                                "type": "string"
-                            },
-                            "commands": {
-                                "description": "Run GitHub 'git' and 'gh' commands you wish to ececute.",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "title": "Commands",
-                                "type": "array"
-                            }
-                        },
-                        "required": [
-                            "agent_id",
-                            "commands"
-                        ],
-                        "type": "object"
-                    },
-                    "description": "Tool to run GitHub commands."
                 },
                 "type": "function"
             },

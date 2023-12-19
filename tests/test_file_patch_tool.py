@@ -23,7 +23,6 @@ class TestFilePatchTool(unittest.TestCase):
 
         """
 
-    @patch("builtins.open", new_callable=mock_open, read_data=self.sample_file_content)
     def test_replace_mode_with_patterns(self, mock_file):
         # Set up a FilePatchTool instance with the replace mode and patterns
         tool = FilePatchTool(
@@ -38,7 +37,6 @@ class TestFilePatchTool(unittest.TestCase):
         self.assertEqual(result, "Code changes successfully applied.")
 
     # Test case for delete mode with line numbers
-    @patch("builtins.open", new_callable=mock_open, read_data=self.sample_file_content)
     def test_delete_mode_with_line_numbers(self, mock_file):
         # Set up a FilePatchTool instance with the delete mode and line numbers
         tool = FilePatchTool(
@@ -53,7 +51,6 @@ class TestFilePatchTool(unittest.TestCase):
         self.assertEqual(result, "Code changes successfully applied.")
 
     # Test case for insert mode with start pattern
-    @patch("builtins.open", new_callable=mock_open, read_data=self.sample_file_content)
     def test_insert_mode_with_start_pattern(self, mock_file):
         # Set up a FilePatchTool instance with the insert mode and a start pattern
         tool = FilePatchTool(
@@ -67,7 +64,6 @@ class TestFilePatchTool(unittest.TestCase):
         self.assertEqual(result, "Code changes successfully applied.")
 
     # Test case for invalid mode error handling
-    @patch("builtins.open", new_callable=mock_open, read_data=self.sample_file_content)
     def test_invalid_mode(self, mock_file):
         # Set up a FilePatchTool instance with an invalid mode
         tool = FilePatchTool(

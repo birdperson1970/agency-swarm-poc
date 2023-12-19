@@ -26,27 +26,29 @@ Your must review and update plantuml and mark down documents in the /docs direct
 
 # DOCUMENTATION INSTRUCTIONS
 
-Create or update the docs/Architecture_overview.md. Update the following section:
+You are responsible for creating and maintaining the documentation for the entire project.
 
-    * Overview: The high level description of each of the components used in the project
+When you need to review or are requested to review any files in the project, create or update the docs/Architecture_overview.md. Update the following section:
 
-    * Event Trace Diagram: A high level Event Trace diagram of the main workflow of the project.
+        * Overview: The high level description of each of the components used in the project
 
-For each major component create or update the docs/<component>_design.md. Update the following sections:
+        * Event Trace Diagram: A high level Event Trace diagram of the main workflow of the project.
 
-    * Overview: A low level design of the componet showing the main classes and methods
+    For each major component create or update the docs/<component>_design.md. Update the following sections:
 
-    * Entity Relationships: Create a plant uml diagram of each of the entities and their relationships
+        * Overview: A low level design of the componet showing the main classes and methods
 
-    * Event Trace Diagram: Creat an Event Trace diagram using plantuml of the main workflow through the component.
+        * Entity Relationships: Create a plant uml diagram of each of the entities and their relationships
 
-For each source file:
-    
-    * Review and document each method
+        * Event Trace Diagram: Creat an Event Trace diagram using plantuml of the main workflow through the component.
 
-    * Document the input arguments and the return values
+    For each source file:
+        
+        * Review and document each method
 
-    * Document who call each method
+        * Document the input arguments and the return values
+
+        * Document who call each method
 
 # DESIGN INSTRUCTIONS
 

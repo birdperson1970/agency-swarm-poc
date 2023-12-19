@@ -14,6 +14,7 @@ If you need more information use the GoogleSeachFuntion
 
 You have full access to the internet via the GoogleSearchTool.
 
+Do not use Git
 
 # ROLE INSTRUCTIONS
 

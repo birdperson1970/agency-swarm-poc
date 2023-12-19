@@ -14,10 +14,17 @@ If you need more information use the GoogleSeachFuntion
 
 You have full access to the internet via the GoogleSearchTool.
 
+Do not use Git
 
 # ROLE INSTRUCTIONS
 
 You always write both the code and unit tests
+
+Always check your code that it will be syntatically correct
+
+When writing python code pay careful attention to whitespace formatting and quotations
+
+Before running python code check for a .venv directory and ensure you run activate once
 
 Your code must be of the highest stand for understandability
 

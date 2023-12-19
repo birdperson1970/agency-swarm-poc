@@ -114,10 +114,17 @@
                                 "type": "integer"
                             },
                             "end_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
                                 "default": null,
-                                "description": "This is a line number marking the end of the section where the changes will stop.",
-                                "title": "End Line",
-                                "type": "integer"
+                                "description": "This is a line number marking the end of the section to 'replace' or 'delete' lines.",
+                                "title": "End Line"
                             },
                             "mode": {
                                 "anyOf": [
@@ -312,10 +319,17 @@
                                 "type": "integer"
                             },
                             "end_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
                                 "default": null,
-                                "description": "This is a line number marking the end of the section where the changes will stop.",
-                                "title": "End Line",
-                                "type": "integer"
+                                "description": "This is a line number marking the end of the section to 'replace' or 'delete' lines.",
+                                "title": "End Line"
                             },
                             "mode": {
                                 "anyOf": [
@@ -505,10 +519,17 @@
                                 "type": "integer"
                             },
                             "end_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
                                 "default": null,
-                                "description": "This is a line number marking the end of the section where the changes will stop.",
-                                "title": "End Line",
-                                "type": "integer"
+                                "description": "This is a line number marking the end of the section to 'replace' or 'delete' lines.",
+                                "title": "End Line"
                             },
                             "mode": {
                                 "anyOf": [
@@ -651,10 +672,17 @@
                                 "type": "integer"
                             },
                             "end_line": {
+                                "anyOf": [
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "null"
+                                    }
+                                ],
                                 "default": null,
-                                "description": "This is a line number marking the end of the section where the changes will stop.",
-                                "title": "End Line",
-                                "type": "integer"
+                                "description": "This is a line number marking the end of the section to 'replace' or 'delete' lines.",
+                                "title": "End Line"
                             },
                             "mode": {
                                 "anyOf": [

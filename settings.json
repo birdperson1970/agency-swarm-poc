@@ -98,7 +98,7 @@
                     "parameters": {
                         "properties": {
                             "file_path": {
-                                "description": "Specify the complete path to the file that you want to make changes to. This should be the absolute path starting from the root or a relative path from the current working directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
+                                "description": "Specify the absolute path to the file that you want to make changes to. This should be the absolute path starting from the root directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
                                 "title": "File Path",
                                 "type": "string"
                             },
@@ -303,7 +303,7 @@
                     "parameters": {
                         "properties": {
                             "file_path": {
-                                "description": "Specify the complete path to the file that you want to make changes to. This should be the absolute path starting from the root or a relative path from the current working directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
+                                "description": "Specify the absolute path to the file that you want to make changes to. This should be the absolute path starting from the root directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
                                 "title": "File Path",
                                 "type": "string"
                             },
@@ -503,7 +503,7 @@
                     "parameters": {
                         "properties": {
                             "file_path": {
-                                "description": "Specify the complete path to the file that you want to make changes to. This should be the absolute path starting from the root or a relative path from the current working directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
+                                "description": "Specify the absolute path to the file that you want to make changes to. This should be the absolute path starting from the root directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
                                 "title": "File Path",
                                 "type": "string"
                             },
@@ -656,7 +656,7 @@
                     "parameters": {
                         "properties": {
                             "file_path": {
-                                "description": "Specify the complete path to the file that you want to make changes to. This should be the absolute path starting from the root or a relative path from the current working directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
+                                "description": "Specify the absolute path to the file that you want to make changes to. This should be the absolute path starting from the root directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
                                 "title": "File Path",
                                 "type": "string"
                             },

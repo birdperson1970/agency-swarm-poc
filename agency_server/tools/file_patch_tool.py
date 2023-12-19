@@ -10,7 +10,7 @@ class FilePatchTool(BaseTool):
     # Define the fields with descriptions using Pydantic Field
     file_path: str = Field(
         ...,
-        description="Specify the complete path to the file that you want to make changes to. This should be the absolute path starting from the root or a relative path from the current working directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
+        description="Specify the absolute path to the file that you want to make changes to. This should be the absolute path starting from the root directory. It is important to ensure the path entered here is correct to avoid errors when applying your changes.",
     )
     snippet: str = Field(
         ...,
